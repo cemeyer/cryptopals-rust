@@ -11,3 +11,7 @@ hex = "0.4.3"
 [[bin]]
 name = "p01"
 path = "p01.rs"
+
+[[bin]]
+name = "p02"
+path = "p02.rs"
