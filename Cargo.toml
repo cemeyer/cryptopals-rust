@@ -15,3 +15,7 @@ path = "p01.rs"
 [[bin]]
 name = "p02"
 path = "p02.rs"
+
+[[bin]]
+name = "p03"
+path = "p03.rs"
