@@ -7,6 +7,10 @@ edition = "2018"
 anyhow = "1.0.51"
 base64 = "0.13.0"
 hex = "0.4.3"
+lazy_static = "1.4.0"
+
+[lib]
+path = "lib.rs"
 
 [[bin]]
 name = "p01"
@@ -19,3 +23,7 @@ path = "p02.rs"
 [[bin]]
 name = "p03"
 path = "p03.rs"
+
+[[bin]]
+name = "p04"
+path = "p04.rs"
