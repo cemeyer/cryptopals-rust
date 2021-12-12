@@ -100,3 +100,11 @@ pub fn score_english_plaintext(v: &[u8]) -> f64 {
 
     score
 }
+
+// Challenge 5
+/// XOR a message with some repeating key
+pub fn repeating_key_xor(cleartext: &mut [u8], key: &[u8]) {
+    for (cb, kb) in cleartext.iter_mut().zip(key.iter().cycle()) {
+        *cb ^= *kb;
+    }
+}
