@@ -7,11 +7,7 @@ use std::collections::*;
 use std::hash::Hash;
 use std::iter::FromIterator;
 
-pub fn xor_byte(v: &mut [u8], b: u8) {
-    for x in v.iter_mut() {
-        *x ^= b;
-    }
-}
+use cryptopals as c;
 
 fn score_plaintext(v: &[u8]) -> usize {
     let mut res = 0;
@@ -31,7 +27,7 @@ fn main() -> Result<()> {
 
     for i in 0u8..=255 {
         let mut xored = input.clone();
-        xor_byte(&mut xored, i);
+        c::xor_byte(&mut xored, i);
 
         let sco = score_plaintext(&xored);
         if sco > bestsco {
