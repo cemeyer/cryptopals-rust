@@ -62,7 +62,7 @@ pub fn score_english_plaintext(v: &[u8]) -> f64 {
     for x in v.iter() {
         // We're ignoring the problem of utf-8 for now.
         if !x.is_ascii() {
-            return 0.;
+            return f64::NEG_INFINITY;
         }
         if *x == b' ' {
             num_spaces += 1;
@@ -77,7 +77,7 @@ pub fn score_english_plaintext(v: &[u8]) -> f64 {
 
     let num_letters = num_letters;
     if num_letters == 0 {
-        return 0.;
+        return f64::NEG_INFINITY;
     }
 
     let mut score = 0.;
@@ -92,11 +92,11 @@ pub fn score_english_plaintext(v: &[u8]) -> f64 {
     score -= 0.5 * symbol_freq;
 
     // Prefer "words"
-    for w in v.split(|x| *x == b' ') {
-        if w.len() > 0 {
-            score += 0.005;
-        }
-    }
+    //for w in v.split(|x| *x == b' ') {
+    //    if w.len() > 0 {
+    //        score += 0.005;
+    //    }
+    //}
 
     score
 }
@@ -106,5 +106,28 @@ pub fn score_english_plaintext(v: &[u8]) -> f64 {
 pub fn repeating_key_xor(cleartext: &mut [u8], key: &[u8]) {
     for (cb, kb) in cleartext.iter_mut().zip(key.iter().cycle()) {
         *cb ^= *kb;
+    }
+}
+
+// Challenge 6
+/// Compute hamming distance between two bytestrings.
+pub fn hamming_distance(a: &[u8], b: &[u8]) -> u32 {
+    let mut res = 0;
+    assert_eq!(a.len(), b.len());
+
+    for (&aa, &bb) in a.iter().zip(b.iter()) {
+        res += (aa ^ bb).count_ones();
+    }
+
+    res
+}
+
+#[cfg(test)]
+mod test {
+    use super::*;
+
+    #[test]
+    fn test_hamming() {
+        assert_eq!(37, hamming_distance(b"this is a test", b"wokka wokka!!!"));
     }
 }
