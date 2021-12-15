@@ -11,6 +11,7 @@ block-modes = "0.8.1"
 block-padding = "0.2.1"
 hex = "0.4.3"
 lazy_static = "1.4.0"
+rand = "0.8.4"
 
 [lib]
 path = "lib.rs"
@@ -54,3 +55,7 @@ path = "p09.rs"
 [[bin]]
 name = "p10"
 path = "p10.rs"
+
+[[bin]]
+name = "p11"
+path = "p11.rs"

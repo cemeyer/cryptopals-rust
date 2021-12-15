@@ -1,7 +1,8 @@
 #![allow(dead_code, unused_assignments, unused_imports, unused_parens, unused_variables)]
 
 use aes::Aes128;
-use block_modes::{BlockMode, Ecb, block_padding::NoPadding};
+use block_modes::{BlockMode, Ecb};
+use block_padding::NoPadding;
 
 use anyhow::{anyhow, Result};
 use std::cmp::{min, max};
