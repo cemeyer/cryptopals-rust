@@ -8,6 +8,7 @@ aes = "0.7.5"
 anyhow = "1.0.51"
 base64 = "0.13.0"
 block-modes = "0.8.1"
+block-padding = "0.2.1"
 hex = "0.4.3"
 lazy_static = "1.4.0"
 
@@ -45,3 +46,7 @@ path = "p07.rs"
 [[bin]]
 name = "p08"
 path = "p08.rs"
+
+[[bin]]
+name = "p09"
+path = "p09.rs"
