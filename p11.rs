@@ -17,10 +17,6 @@ use cryptopals as c;
 type Aes128Cbc = Cbc<Aes128, NoPadding>;
 type Aes128Ecb = Ecb<Aes128, NoPadding>;
 
-fn roundup(x: usize, y: usize) -> usize {
-    ((x + (y - 1)) / y) * y
-}
-
 /// Encrypts under a random key, random IV, and 50-50 ECB or CBC.
 fn random_encrypter(data: &[u8]) -> Vec<u8> {
     let mut rng = rand::thread_rng();
@@ -30,7 +26,7 @@ fn random_encrypter(data: &[u8]) -> Vec<u8> {
 
     let pad1 = (rng.next_u32() as usize % 6) + 5;
     let pad2 = (rng.next_u32() as usize % 6) + 5;
-    let totallen = roundup(pad1 + data.len() + pad2, 16);
+    let totallen = c::roundup(pad1 + data.len() + pad2, 16);
 
     let mut output = vec![0; totallen];
     let msglen = output.len();
